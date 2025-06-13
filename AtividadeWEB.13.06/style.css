@@ -1,0 +1,26 @@
+
+body{
+    background-color: rgb(204, 204, 204)
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza horizontalmente */
+  height: 150%; /* Altura do contêiner */
+  background-color: bisque;
+  width: 100vh;
+}
+
+.produtos {
+    background-color: aliceblue;
+    width: 100%;
+}
+
+.produtos img {
+    justify-content: center;
+    align-items: center;
+    display: flexbox;
+    padding: 20px;
+    height: 200px;
+}

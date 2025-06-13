@@ -1,0 +1,124 @@
+# include < iostream >
+2
+3 using namespace std;
+4
+5 class Pilha
+6 {
+7 private:
+8 string Nome , Telefone;
+9 Pilha * elo ;
+10 public :
+11 Pilha * InserirPilha( Pilha *T , std :: string N , std :: string Tel)
+12 {
+13 Pilha * aux = new Pilha () ;
+14 aux - > Nome = N;
+15 aux - > Telefone = Tel ;
+16 aux - > elo = T ;
+17 T = aux ;
+18 return T;
+19 };
+20 void PercorrerPilha ( Pilha *T)
+21 {
+22 Pilha * aux = T;
+23 if( aux == NULL )
+24 {
+25 std :: cout << "\ nPilha vazia !\n ";
+26 }
+27 else
+28 {
+29 std :: cout << "\ nRegistros Cadastrados\n";
+30 while( aux != NULL )
+31 {
+32 std :: cout << aux - > Nome << " - " << aux - > Telefone << std ::
+endl ;
+33 aux = aux - > elo ;
+34 }
+35 }
+36 };
+37 Pilha * RemoverPilha( Pilha *T)
+38 {
+39 Pilha * aux = T;
+40 T = T - > elo ;
+41 delete ( aux );
+42 return T;
+43 };
+44
+45
+46
+Estruturas de Dados
+Prof. Marcelo C. Mussel
+47 Pilha * EsvaziarPilha( Pilha *T)
+48 {
+49 Pilha * aux = T;
+50 while( aux != NULL )
+51 {
+52 T = T - > elo;
+53 delete ( aux) ;
+54 aux = T;
+55 }
+56 return T;
+57 };
+58 };
+59 void Menu () {
+60 system (" clear ");
+61 cout << "1 - Inserir dados \n ";
+62 cout << "2 - Exibir dados \n";
+63 cout << "3 - Apagar registro\n";
+64 cout << "4 - Esvaziar pilha de dados \n ";
+65 cout << "5 - Finalizar programa\n";
+66 cout << " Informe sua opção : ";
+67 };
+68
+69 int main ()
+70 {
+71 Pilha P , * topo = NULL ;
+72 int op ;
+73 string n , t;
+74 do{
+75 Menu () ;
+76 cin >> op ;
+77 switch ( op ){
+78 case 1:
+79 cout << " \ nDigite o nome : ";
+80 cin. ignore () ; // limpa o buffer
+81 getline( cin ,n) ; // armazena até digitar o enter
+82 cout << " \ nDigite o telefone: ";
+83 getline( cin ,t) ;
+84 topo = P. InserirPilha( topo , n , t);
+85 cout << " \ nRegistro incluido com sucesso !!\n";
+86 break ;
+87 case 2:
+88 P . PercorrerPilha( topo );
+89 break ;
+90 case 3:
+91 if( topo == NULL ){
+92 cout << "\ nSem registros para deletar!\ n";
+93 } else{
+94 topo = P. RemoverPilha( topo ) ;
+95 cout << "\ nRegistro deletado!\ n";
+96 }
+97 break ;
+98 case 4:
+99 if( topo == NULL ){
+100 cout << "\ nSem registros para deletar!\ n";
+101 } else{
+102 topo = P. EsvaziarPilha( topo );
+103 cout << "\ nPilha vazia !\n ";
+104 }
+105 break ;
+106
+107
+Estruturas de Dados
+Prof. Marcelo C. Mussel
+108 case 5:
+109 cout << " \ nTchau !!\n";
+110 break ;
+111 default:
+112 cout << " \ nOpção inválida!\ n";
+113 }
+114 cout << "\ nPressione Enter para continuar !! ";
+115 cin . ignore () . get () ;
+116 } while( op != 5) ;
+117
+118 return 0;
+119 }
